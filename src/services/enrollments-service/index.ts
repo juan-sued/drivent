@@ -12,14 +12,7 @@ async function getAddressFromCEP(cep: string): Promise<ViaCEPAddress> {
   if (!result.data) {
     throw notFoundError();
   }
-  const { 
-    logradouro,
-    complemento,
-    bairro,
-    localidade,
-    uf,
-    error
-  }: ViaCEPAddress = result.data;
+  const { logradouro, complemento, bairro, localidade, uf, error }: ViaCEPAddress = result.data;
 
   return { logradouro, complemento, bairro, cidade: localidade, uf, error };
 }
@@ -76,7 +69,7 @@ export type CreateOrUpdateEnrollmentWithAddress = CreateEnrollmentParams & {
 const enrollmentsService = {
   getOneWithAddressByUserId,
   createOrUpdateEnrollmentWithAddress,
-  getAddressFromCEP
+  getAddressFromCEP,
 };
 
 export default enrollmentsService;
